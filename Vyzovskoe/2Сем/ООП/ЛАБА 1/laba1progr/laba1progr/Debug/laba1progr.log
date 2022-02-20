@@ -1,0 +1,7 @@
+﻿  laba1progr.cpp
+C:\Users\kosty\OneDrive\Documents\GitHub\Vyzovskoe\Vyzovskoe\2Сем\ООП\ЛАБА 1\laba1progr\laba1progr\laba1progr.cpp(9,22): warning C4305: инициализация: усечение из "double" в "float"
+C:\Users\kosty\OneDrive\Documents\GitHub\Vyzovskoe\Vyzovskoe\2Сем\ООП\ЛАБА 1\laba1progr\laba1progr\laba1progr.cpp(19,22): warning C4305: инициализация: усечение из "double" в "float"
+C:\Users\kosty\OneDrive\Documents\GitHub\Vyzovskoe\Vyzovskoe\2Сем\ООП\ЛАБА 1\laba1progr\laba1progr\laba1progr.cpp(36,17): error C2664: "int printf(const char *const ,...)": невозможно преобразовать аргумент 1 из "double" в "const char *const "
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\stdio.h(950,37): message : см. объявление "printf"
+C:\Users\kosty\OneDrive\Documents\GitHub\Vyzovskoe\Vyzovskoe\2Сем\ООП\ЛАБА 1\laba1progr\laba1progr\laba1progr.cpp(37,18): warning C4474: "printf" : для строки формата передано слишком много аргументов
+C:\Users\kosty\OneDrive\Documents\GitHub\Vyzovskoe\Vyzovskoe\2Сем\ООП\ЛАБА 1\laba1progr\laba1progr\laba1progr.cpp(37,18): message : заполнители и их параметры ожидают переменное число аргументов в количестве 0, но было предоставлено 1
