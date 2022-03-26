@@ -1,0 +1,6 @@
+﻿  laba3.cpp
+C:\Users\kosty\Documents\GitHub\Vyzovskoe\2Сем\Основы программирования\laba3\laba3\laba3.cpp(42,17): warning C4244: =: преобразование "double" в "unsigned short", возможна потеря данных
+C:\Users\kosty\Documents\GitHub\Vyzovskoe\2Сем\Основы программирования\laba3\laba3\laba3.cpp(50,17): warning C4244: =: преобразование "double" в "unsigned short", возможна потеря данных
+C:\Users\kosty\Documents\GitHub\Vyzovskoe\2Сем\Основы программирования\laba3\laba3\laba3.cpp(57,17): warning C4244: =: преобразование "double" в "unsigned short", возможна потеря данных
+C:\Users\kosty\Documents\GitHub\Vyzovskoe\2Сем\Основы программирования\laba3\laba3\laba3.cpp(64,17): warning C4244: =: преобразование "double" в "unsigned short", возможна потеря данных
+  laba3.vcxproj -> C:\Users\kosty\Documents\GitHub\Vyzovskoe\2Сем\Основы программирования\laba3\x64\Debug\laba3.exe

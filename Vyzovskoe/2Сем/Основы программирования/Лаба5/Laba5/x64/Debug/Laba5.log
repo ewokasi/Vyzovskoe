@@ -1,0 +1,6 @@
+﻿  Laba5.cpp
+C:\Users\kosty\Documents\GitHub\Vyzovskoe\2Сем\Основы программирования\Laba5\Laba5\Laba5.cpp(131,30): warning C4244: инициализация: преобразование "double" в "size_t", возможна потеря данных
+C:\Users\kosty\Documents\GitHub\Vyzovskoe\2Сем\Основы программирования\Laba5\Laba5\Laba5.cpp(137,24): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+C:\Users\kosty\Documents\GitHub\Vyzovskoe\2Сем\Основы программирования\Laba5\Laba5\Laba5.cpp(138,22): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+C:\Users\kosty\Documents\GitHub\Vyzovskoe\2Сем\Основы программирования\Laba5\Laba5\Laba5.cpp(139,14): warning C4244: аргумент: преобразование "double" в "const int", возможна потеря данных
+  Laba5.vcxproj -> C:\Users\kosty\Documents\GitHub\Vyzovskoe\2Сем\Основы программирования\Laba5\x64\Debug\Laba5.exe
