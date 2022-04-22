@@ -1,2 +1,3 @@
 ﻿  laba6.cpp
-  laba6.vcxproj -> C:\Users\kosty\Documents\GitHub\Vyzovskoe\2Сем\Основы программирования\laba6\x64\Debug\laba6.exe
+C:\Users\kosty\Documents\GitHub\Vyzovskoe\2Сем\Основы программирования\Лаба6\laba6\laba6.cpp(87,11): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+  laba6.vcxproj -> C:\Users\kosty\Documents\GitHub\Vyzovskoe\2Сем\Основы программирования\Лаба6\x64\Debug\laba6.exe

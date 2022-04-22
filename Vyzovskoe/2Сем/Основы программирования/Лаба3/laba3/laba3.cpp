@@ -1,7 +1,9 @@
 ﻿
 #include <iostream>
 #include <string>
+#include <bitset>
 using namespace std;
+
 
 double fill() {
     std::string input;
@@ -32,40 +34,29 @@ double fill() {
     return stoi(input);
 }
 
+int prepack(int n) {
+    int b = 0;
+    while (b <= n) {        //ввод приемлемых значений
+        cout << "Enter decade num lower then "<<n<<"\n";
+        b = fill();
+        if (b <= n) {
+            break;
+        }
+
+    }
+    return b;
+}
 
 int main()
 {  
     unsigned short int s{}, d{}, f{}, b{}, x;
 
-    while (s <= 7) {        //ввод приемлемых значений
-        cout << "Enter decade num lower then 8\n";
-        s = fill();
-        if (s <= 7) {
-            break;
-        }
-        
-    }
-    while (d <= 1) {        //ввод приемлемых значений
-        cout << "Enter decade num lower then 2\n";
-        d = fill();
-        if (d <= 1) {
-            break;
-        }
-    }
-    while (f <= 1) {        //ввод приемлемых значений
-        cout << "Enter decade num lower then 2\n";
-        f = fill();
-        if (f <= 1) {
-            break;
-        }
-    }
-    while (b <= 255) {        //ввод приемлемых значений
-        cout << "Enter decade num lower then 256\n";
-        b = fill();
-        if (b <= 255) {
-            break;
-        }
-    }
+    s = prepack(7); //заполняем ячейки
+    d = prepack(1);
+    f = prepack(1);
+    b = prepack(255);
+
+
     x = b;          //пакуем все данные
     x = 0 << 8 | x;
     x = f << 9 | x;
@@ -73,4 +64,5 @@ int main()
     x = d << 11 | x;
     x = s << 13 | x;
     cout <<hex << x << endl;
+    cout << bitset<16>{x};
 }

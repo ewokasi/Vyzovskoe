@@ -32,25 +32,31 @@ double fill() {
 
 }
 
-void solve(double a, double b, double c, double xn, double xk, double xd) {
-    for (double i = xn; i <= xk; i += xd) {
-        double f;
-        if (c != 0 and i < 5) {
-            f = -a * i * i - b;
-        }
-        else if (i > 5 and c == 0) {
-            f = (i - a) / i;
-        }
-        else {
-            f = (-i) / c;
-        }
-        std::cout <<"x=" << i << ": F=" << f << "\n";
-    }
+std::string solve(double a, double b, double c, double i) {
 
-}
+     double f;
+     if (i != 0) {
+         if (c != 0 and i < 5) {
+             f = -a * i * i - b;
+         }
+         else if (i > 5 and c == 0) {
+             f = (i - a) / i;
+         }
+         else {
+             f = (-i) / c;
+         }
+         return std::to_string(f);
+     }
+     else
+     {
+         return "err";
+     }
+ }
+
 
 int main()
 {   
+    setlocale(LC_ALL, "rus");
     double a, b, c;
     double xn, xk, xd;
     std::cout << "enter a, b, c, x0, x1, xd\n";
@@ -60,9 +66,18 @@ int main()
     xn = fill();
     xk = fill();
     xd = fill();
-    solve(a, b, c, xn, xk, xd);
-    
-    
-    
-    
+
+    if (xn > xk) {
+        double c = xn;
+        xn = xk;
+        xk = c;
+    }
+    if (xd < 0)xd = -xd;
+
+
+    for (double i = xn; i <= xk; i = i + xd) {
+        std::cout << "x: " << i << " F=" << solve(a, b, c, i) << std::endl;
+    }
+
+     
 }

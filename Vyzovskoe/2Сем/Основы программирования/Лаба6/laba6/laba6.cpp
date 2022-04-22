@@ -9,8 +9,10 @@
 #endif
 
 #include <iostream>
+#include<string>
 
 using namespace std;
+
 
 void search(double* arr[], int n) {
 	for (int i = 0; i < n; i++) {
@@ -23,6 +25,7 @@ void search(double* arr[], int n) {
 			}
 		}
 	}
+	
 }
 
 void sum_m(double* arr[], int n){
@@ -37,42 +40,85 @@ void sum_m(double* arr[], int n){
 				for (int q=0; q < n; q++) {
 					res = res + arr[i][q];
 				}
-				cout <<"sum of minus in "<<i<<" string: " << res << endl;
+				cout <<"sum with minus in "<<i<<" string: " << res << endl;
+				res = 0;
+				flag = 0;
+				break;
 			}
 		}
 	}
+	
+}
+
+double fill() {
+	std::string input;
+	while (true)    //проверка введенного числа
+	{
+
+		bool error = 0;
+		std::cin >> input;
+		for (int i = 0; i < input.size(); i++) {
+
+			if ((isdigit(input[i]) == 0 && input[i] != '.' && input[i] != '-')) {
+				error = 1;
+				break;
+			}
+
+		}
+		if (error == 1) {
+			printf("Enter value without letters\n");
+
+		}
+		else
+		{
+			break;
+		}
+	}
+	
+	return std::stod(input);
 }
 
 int main()
 {
-	cout << "Enter N\n";
-	int n;
-	cin >> n;
+	
+	int n= -1;
+	while (n <= 0) {
+		cout << "Enter N\n";
+		n = fill();
+	}
+	
 
 	double** arr = new double*[n];
 	for (int i = 0; i < n; i++) {
 		arr[i] = new double[n];
 	}
-
+	cout << "Fill all your strings\n";
 	for (int i = 0; i < n; i++)
 	{	
 		int c = 0;
 		for (int j = 0; j < n; j++)
 		{
-			cin >> arr[i][j];
+			cout << "enter [" << i << "] [" << j << "] element: ";
+			arr[i][j]=fill();
 			
 		}
-		
-		for (int j = 0; j < n; j++) {
-			cout << arr[i][j] << ' ';
-		}
-			cout << endl;
 	}
-		
+	cout << endl;
+	for (int i = 0; i < n; i++) {
+		for (int q = 0;q < n; q++) {
+			cout << arr[i][q] << " ";
+		}
+		cout << endl;
+	}
+	cout << endl;
 	
 	search(arr, n);
 	sum_m(arr, n);
-	delete [] arr;
+
+	for (int i = 0; i < n; i++) {
+		delete[] arr[i];
+	}
+	delete[] arr;
 
 	// Для обнаружения утечек памяти
 	_CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_FILE);

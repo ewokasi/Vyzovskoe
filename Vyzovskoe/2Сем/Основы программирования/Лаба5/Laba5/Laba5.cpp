@@ -52,29 +52,36 @@ double nul(double arr[], int n) { //поиск произведения межд
     }
     }
  
-void mut(double arr[], const int n) {//переставление элементов
-    double* arr1 = new double[n/2];
+void mut(double arr[],const int n) {//переставление элементов
+    
+    double* arr1 = new double[n / 2 +(n%2)];
     double* arr2 = new double[n / 2];
     double* arr3 = new double[n];
     int q = 0;
-    for (int i = 0; i < n; i = i + 2) {
-        arr1[q] = arr[i];
-        q++;
+
+
+    for (int i = 0; i < n; i = i + 1) {
+        if (i % 2 == 0) {
+            arr1[q] = arr[i];
+            q++;
+        }
     }
 
     q = 0;
-    for (int i = 1; i < n; i = i + 2) {
-        arr2[q] = arr[i];
-        q++;
+    for (int i = 1; i < n; i = i + 1) {
+        if (i % 2 == 1) {
+            arr2[q] = arr[i];
+            q++;
+        }
     }
     
     for (int i = 0; i < n; i++) {
-        if (i < n / 2) {
+        if (i < n / 2 + (n % 2)) {
             arr3[i] = arr1[i];
         }
         else
         {
-            arr3[i] = arr2[i - n / 2];
+            arr3[i] = arr2[i - n / 2 - (n % 2)];
         }
     }
 
@@ -85,10 +92,6 @@ void mut(double arr[], const int n) {//переставление элемент
     delete [] arr2;
     delete [] arr3;
 }
-
-
-#include <iostream>
-#include <string>
 
 double fill() {
     std::string input;
@@ -123,9 +126,15 @@ double fill() {
 
 int main()
 {
-    std::cout << "Enter N\n";
+    
     double n;
-    n = fill();
+    n = 0;
+    while(n==0 || n<0 ){
+        std::cout << "Enter N\n";
+        n = fill();
+    }
+    
+
     std::cout << "Enter arr 1 by 1\n";
    
     double *arr = new double[n]; //динамическое создание массива
@@ -134,8 +143,9 @@ int main()
          arr[i]=fill();
 
     }
-    cout << max_i(arr, n)<<endl; //результат
-    cout << nul(arr, n)<<endl;
+    cout << max_i(arr, n)<<" Max elem" << endl; //результат
+    cout << nul(arr, n)<<"null multipl" << endl;
+    cout << "array mixing ";
     mut(arr, n);
     delete [] arr; //очистка
 
