@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vyzril", "vyzril\vyzril.csproj", "{4FD03521-A08A-4448-8C1F-36FF08A56372}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4FD03521-A08A-4448-8C1F-36FF08A56372}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FD03521-A08A-4448-8C1F-36FF08A56372}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FD03521-A08A-4448-8C1F-36FF08A56372}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FD03521-A08A-4448-8C1F-36FF08A56372}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3EE26AA0-B52C-41B6-9C81-D0270CE0FE61}
+	EndGlobalSection
+EndGlobal

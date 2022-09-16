@@ -1,0 +1,4 @@
+﻿  laba8.cpp
+C:\Users\kosty\Documents\GitHub\Vyzovskoe\2Сем\Основы программирования\laba8\laba8\laba8.cpp(8,1): warning C4005: _CRT_SECURE_NO_WARNINGS: изменение макроопределения
+C:\Users\kosty\Documents\GitHub\Vyzovskoe\2Сем\Основы программирования\laba8\laba8\laba8.cpp : message : см. предыдущее определение "_CRT_SECURE_NO_WARNINGS"
+  laba8.vcxproj -> C:\Users\kosty\Documents\GitHub\Vyzovskoe\2Сем\Основы программирования\laba8\x64\Debug\laba8.exe

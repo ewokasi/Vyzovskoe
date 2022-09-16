@@ -1,0 +1,8 @@
+
+The equation of harmonic oscillations.
+Spring pendulum. Connection of characteristics with initial conditions.
+Kinematic characteristics of the oscillatory process (amplitude, phase, frequency).
+Dynamics of harmonic oscillations.
+Addition of two harmonic oscillations with aggregate frequencies, pulsating Subject of mechanics. mechanical movement. Spatio-temporal reference system. Material point.
+Kinematics of motion of a material point. Basic concepts are radius-vector, displacement vector, average speed, average acceleration, fast speed, rotation speed.
+Acceleration is normal, tangential full.
