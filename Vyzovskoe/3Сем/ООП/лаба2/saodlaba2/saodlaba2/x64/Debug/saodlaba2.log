@@ -1,0 +1,14 @@
+﻿  saodlaba2.cpp
+C:\Users\kosty\Documents\GitHub\Vyzovskoe\3Сем\ООП\лаба2\saodlaba2\saodlaba2\saodlaba2.cpp(148,14): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+C:\Users\kosty\Documents\GitHub\Vyzovskoe\3Сем\ООП\лаба2\saodlaba2\saodlaba2\saodlaba2.cpp(204,17): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+C:\Users\kosty\Documents\GitHub\Vyzovskoe\3Сем\ООП\лаба2\saodlaba2\saodlaba2\saodlaba2.cpp(205,13): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+C:\Users\kosty\Documents\GitHub\Vyzovskoe\3Сем\ООП\лаба2\saodlaba2\saodlaba2\saodlaba2.cpp(206,13): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+  saodlaba2.vcxproj -> C:\Users\kosty\Documents\GitHub\Vyzovskoe\3Сем\ООП\лаба2\saodlaba2\x64\Debug\saodlaba2.exe

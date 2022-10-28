@@ -1,1 +1,4 @@
-﻿  soadl1.vcxproj -> C:\Users\kosty\Documents\GitHub\Vyzovskoe\2Сем\Основы программирования\soadl1\x64\Debug\soadl1.exe
+﻿  soadl1.cpp
+C:\Users\kosty\Documents\GitHub\Vyzovskoe\3Сем\СОАД\ЛАБА1\soadl1\soadl1\soadl1.cpp(97,11): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\kosty\Documents\GitHub\Vyzovskoe\3Сем\СОАД\ЛАБА1\soadl1\soadl1\soadl1.cpp(106,19): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+  soadl1.vcxproj -> C:\Users\kosty\Documents\GitHub\Vyzovskoe\3Сем\СОАД\ЛАБА1\soadl1\x64\Debug\soadl1.exe

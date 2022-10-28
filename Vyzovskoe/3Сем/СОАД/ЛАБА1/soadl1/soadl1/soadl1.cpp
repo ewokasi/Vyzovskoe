@@ -36,7 +36,7 @@ double fill() {
 }
 
 
-int* gen_array(int n)
+int* gen_array(int n) 
 {
     random_device rd;
     mt19937 gen(rd());
@@ -48,11 +48,11 @@ int* gen_array(int n)
         int pos = gen()%2;
         if (pos == 1)
         {
-            arr[i] = rand_num % 6;
+            arr[i] = rand_num % n/2+1;
         }
         else
         {
-            arr[i] = -rand_num % 4-1;
+            arr[i] = -rand_num % n/2-1;
         }
     }
 
@@ -81,17 +81,14 @@ int* decrease_by_two(int arr[], int n)
 }
 
 
-int count_pos(int arr[], int n)
+int count_pos(int b)
 {
-    int num_of_pos = 0;
-    for (int i = 0; i < n; i++)
-    {
-        if (arr[i] >= 0)
-        {
-            num_of_pos += 1;
-        }
+    if (b >= 0) {
+        return 1;
     }
-    return num_of_pos;
+    else {
+        return 0;
+    }
 }
 
 int main()
@@ -116,8 +113,13 @@ int main()
             cout << endl;
         }
         else if (input == 2) {
-            cout << "Number of positive elements: "<<count_pos(arr, n);
-            cout << endl;
+            int c = 0;
+            for (int i = 0; i < n; i++) {
+                if (count_pos(arr[i]) == 1) {
+                    c++;
+                }
+            }
+            cout << "pos " << c << endl;
         }
         else {
             break;
