@@ -1,0 +1,9 @@
+﻿  ooplaba3.cpp
+C:\Users\kosty\source\repos\ooplaba3\ooplaba3\ooplaba3.cpp(291,22): warning C4838: Преобразование из "int" в "double" требует сужающего преобразования.
+C:\Users\kosty\source\repos\ooplaba3\ooplaba3\ooplaba3.cpp(291,25): warning C4838: Преобразование из "int" в "double" требует сужающего преобразования.
+C:\Users\kosty\source\repos\ooplaba3\ooplaba3\ooplaba3.cpp(300,23): warning C4838: Преобразование из "int" в "double" требует сужающего преобразования.
+C:\Users\kosty\source\repos\ooplaba3\ooplaba3\ooplaba3.cpp(300,26): warning C4838: Преобразование из "int" в "double" требует сужающего преобразования.
+C:\Users\kosty\source\repos\ooplaba3\ooplaba3\ooplaba3.cpp(42): warning C4172: возвращение адреса локальной или временной переменной : point
+C:\Users\kosty\source\repos\ooplaba3\ooplaba3\ooplaba3.cpp(48): warning C4172: возвращение адреса локальной или временной переменной : point
+C:\Users\kosty\source\repos\ooplaba3\ooplaba3\ooplaba3.cpp(54): warning C4172: возвращение адреса локальной или временной переменной : point
+  ooplaba3.vcxproj -> C:\Users\kosty\source\repos\ooplaba3\Debug\ooplaba3.exe
