@@ -194,6 +194,13 @@ void table::del(int id)
         return;
     }
 
+    if (size==1 and id==1)
+    {
+        top = nullptr;
+        size--;
+        return;
+    }
+
     str* current = top;
     if (id<=1)
     {
@@ -204,6 +211,7 @@ void table::del(int id)
         current = current->next;
     }
     current->next = current->next->next;
+    size--;
 }
 
 void table::gen(int count)
@@ -284,12 +292,14 @@ int main()
             
             std::cin >> ind;
             std::cout << table.find_id(ind);
+            break;
 
         case 5:
             std::cout << "Enter data: ";
             
             std::cin >> data;
             std::cout << table.find_data(data);
+            break;
 
         case 6:
             std::cout << "Enter Destination point (file.txt): ";
