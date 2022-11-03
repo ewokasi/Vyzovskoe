@@ -28,11 +28,11 @@ GLfloat angle3 = 240;
 
 
 GLfloat diffuseColor0[] = { 1, 0.2, 0, 1.0 };
-GLfloat diffuseColor1[] = { 0, 0.8,0, 0.4 };
+GLfloat diffuseColor1[] = { 0, 0.8,0, 1 };
 GLfloat diffuseColor2[] = { 0.3, 0.5, 0.9, 1.0 };
 
 GLfloat ambientColor2[] = { 0.6, 0.8, 0.8, 1.0 };
-GLfloat ambientColor0[] = { 0.2, 0.2, 0.2, 0.4 };
+GLfloat ambientColor0[] = { 0.2, 0.2, 0.2, 1 };
 
 GLfloat con_pos[3] = { 1, 0 , -1 };
 GLfloat miror_cone[] = { 0.6, 0.0, 1.0, 1.0 };
@@ -129,7 +129,7 @@ void display() {
 }
 
 void initGL() {
-    glClearColor(0.4f, 0.1f, 0.1f, 1.0f); // цвет фона
+    glClearColor(0.1f, 0.1f, 0.2f, 1.0f); // цвет фона
     glClearDepth(1.0f);                   // глубина фона
     glEnable(GL_DEPTH_TEST);   // врубаем depth test
     glDepthFunc(GL_LEQUAL);    // тип depth test
