@@ -3,20 +3,18 @@
 #include <GL/glut.h>
 #include <cstdio>
 #include <math.h>
-#include "Header.h"
-//#include "stb_image.h"
 
 
-char title[] = "BOX";
 
 
-GLfloat mousepos[] = { 0, 0 };
+char title[] = "КАЧАЛКА";
 
-GLfloat angle_y = -70.0f;
+GLfloat ligtht_radius = 5;
+GLfloat angle_y =0.0f;
 GLfloat angle_x = 0.0f;
-GLfloat pos_x = -2.5f;
-GLfloat pos_y = 1.0f;
-GLfloat zoom = -14.0f;
+GLfloat pos_x = 0;
+GLfloat pos_y = 0.0f;
+GLfloat zoom = -4.0f;
 int refreshMills = 20;
 
 //для света
@@ -35,11 +33,32 @@ GLfloat diffuseColor2[] = { 0.3, 0.5, 0.9, 1.0 };
 
 GLfloat ambientColor2[] = { 0.6, 0.8, 0.8, 1.0 };
 GLfloat ambientColor0[] = { 0.2, 0.2, 0.2, 0.4 };
-int light = 0;
+
+GLfloat con_pos[3] = { 1, 0 , -1 };
+GLfloat miror_cone[] = { 0.6, 0.0, 1.0, 1.0 };
+GLfloat dif_cone[] = { 0.2, 0.2, 0.2, 1.0 };
+GLfloat AMB_cone[] = { 0.0, 0.04, 0.2, 1.0 };
+GLfloat EMIS_cone[] = { 0.1, 0.1, 0.1, 1.0 };
+
+
+GLfloat pot_pos[3] = { 0, 0 , 0 };
+GLfloat miror_pot[] = { 0.3, 0.2, 0.4, 1.0 };
+GLfloat dif_pot[] = { 0.0, 1.0, 0.88, 0.3 };
+GLfloat AMB_pot[] = { 0.0, 0.0, 0.0, 1.0 };
+GLfloat EMIS_pot[] = { 0.0, 0.0, 0.0, 1.0 };
+
+GLfloat miror_ico[] = { 0.1, 0.2, 0.4, 1.0 };
+GLfloat dif_ico[] = { 0.2, 0.2, 0.2, 0.8 };
+GLfloat AMB_ico[] = { 0.4, 1.0, 0.3, 0.2 };
+GLfloat EMIS_ico[] = { 0.3, 0.3, 0.3, 0.3 };
+GLfloat ico_pos[3] = { -1, 0, 0 };
+
 
 void display() {
-
-
+    //прозрачность
+    
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glMatrixMode(GL_MODELVIEW);
@@ -66,63 +85,34 @@ void display() {
     glTranslated(-pos2[0], -pos2[1], -pos2[2]);
 
 
-    angle1 += 10;
-    pos0[0] = 10 * cos(angle1 / 180);
-    pos0[1] = 10 * sin(angle1 / 180);
-
-
-    angle2 += 10;
-    pos1[2] = 10 * cos(angle2 / 180);
-    pos1[1] = 10 * sin(angle2 / 180);
-
-
-    angle3 += 10;
-    pos2[0] = 10 * sin(angle3 / 180);
-    pos2[1] = 10 * cos(angle3 / 180);
-
  
-    GLfloat miror[] = { 0.6, 0.0, 1.0, 3.0 }; 
-    GLfloat dif[] = { 0.2, 0.2, 0.2, 0.2 };
-    GLfloat AMB[] = { 0.0, 0.04, 0.2, 0.5 };
-    GLfloat EMIS[] = { 0.1, 0.1, 0.1, 0.6 };
-    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, AMB); 
-    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, miror); 
-    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, dif);   
-    glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, EMIS); 
-    glTranslatef(0.0f, 0.0f, -8.0f);
-    glTranslatef(1.0f, 0.0f, 4.0f);
-    glTranslatef(0.0f, 0.0f, 8.0f);
-    glTranslatef(-1.0f, 0.0f, -4.0f);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, AMB_cone); 
+    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, miror_cone); 
+    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, dif_cone);   
+    glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, EMIS_cone); 
+    glTranslatef(con_pos[0], con_pos[1], con_pos[2]);
     glutSolidCone(1,2 ,100, 100);
+    glTranslatef(-con_pos[0], -con_pos[1], -con_pos[2]);
    
 
-    GLfloat miror2[] = { 0.3, 0.2, 0.4, 1.0 };   
-    GLfloat dif2[] = { 0.0, 1.0, 0.88, 1.0 }; 
-    GLfloat AMB2[] = { 0.0, 0.0, 0.0, 1.0 };
-    GLfloat EMIS2[] = { 0.0, 0.0, 0.0, 1.0 };
-    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, AMB2); 
-    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, miror2); 
-    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, dif2);    
-    glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION,EMIS);         
-    glTranslatef(3, 5, 0);
-    glutSolidOctahedron();
-    glTranslatef(-3, -5, 0);
-    glTranslatef(0, -5, 0);
-
-    GLfloat miror3[] = { 0.1, 0.2, 0.4, 0.0 };
-    GLfloat dif3[] = { 0.2, 0.2, 0.2, 0.4 };
-    GLfloat AMB3[] = { 0.93, 1.0, 0.3, 1.0 };
-    GLfloat EMIS3[] = { 0.3, 0.3, 0.3, 0.1 };
-
-
-    glTranslatef(3, 0, 0);
     
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, AMB_pot);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, miror_pot);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, dif_pot);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION,EMIS_pot);
+    glTranslatef(pot_pos[0], pot_pos[1], pot_pos[2]);
+    glutSolidTeapot(1);
+    glTranslatef(-pot_pos[0], -pot_pos[1], -pot_pos[2]);
+
+
+ 
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, AMB_ico);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, miror_ico);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, dif_ico);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, EMIS_ico);
+    glTranslatef(ico_pos[0], ico_pos[1], ico_pos[2]);
     glutSolidIcosahedron();
-    glTranslatef(-3, 0, 0);
-    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, AMB3); 
-    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, miror3);   
-    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, dif3);  
-    glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, EMIS3);
+    glTranslatef(-ico_pos[0], -ico_pos[1], -ico_pos[2]);
     glFlush();
     glDisable(GL_TEXTURE_2D);
 
@@ -139,13 +129,15 @@ void display() {
 }
 
 void initGL() {
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // цвет фона
+    glClearColor(0.4f, 0.1f, 0.1f, 1.0f); // цвет фона
     glClearDepth(1.0f);                   // глубина фона
     glEnable(GL_DEPTH_TEST);   // врубаем depth test
     glDepthFunc(GL_LEQUAL);    // тип depth test
     glShadeModel(GL_SMOOTH);   
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);  
 }
+
+
 
 void process_Normal_Keys(unsigned char key, int x, int y) {
 
@@ -198,25 +190,70 @@ void process_Normal_Keys(unsigned char key, int x, int y) {
     case('3'):
         pos_y += -0.5;
         break;
+
+    case ('+'):
+        ligtht_radius += 0.5;
+        break;
+
+    case ('-'):
+        ligtht_radius -= 0.5;
+        break;
     case ('f'):
   
         angle1 += 10;
-        pos0[0] = 10* cos(angle1 / 180);
-        pos0[1] = 10* sin(angle1 / 180);
-
-
-        angle2 += 10;
-        pos1[2] = 10 * cos(angle2 / 180);
-        pos1[1] = 10 * sin(angle2 / 180);
-
+        pos0[0] = ligtht_radius * cos(angle1 / 180);
+        pos0[1] = ligtht_radius * sin(angle1 / 180);
+        break;
    
-        angle3 += 10;
-        pos2[0] = 10 * sin(angle3 / 180);
-        pos2[1] = 10 * cos(angle3 / 180);
+        /**/
+    
+    case ('F'):
+
+        angle1 -= 10;
+        pos0[0] = ligtht_radius * cos(angle1 / 180);
+        pos0[1] = ligtht_radius * sin(angle1 / 180);
         break;
 
+    case ('g'):
+
+        angle2 += 10;
+        pos1[2] = ligtht_radius * cos(angle2 / 180);
+        pos1[1] = ligtht_radius * sin(angle2 / 180);
+        break;
+
+    case ('G'):
+
+        angle2 -= 10;
+        pos1[2] = ligtht_radius * cos(angle2 / 180);
+        pos1[1] = ligtht_radius * sin(angle2 / 180);
+        break;
+
+    case ('h'):
+
+        angle3 += 10;
+        pos2[0] = ligtht_radius * sin(angle3 / 180);
+        pos2[1] = ligtht_radius * cos(angle3 / 180);
+        break;
+
+    case ('H'):
+
+        angle3 -= 10;
+        pos2[0] = ligtht_radius * sin(angle3 / 180);
+        pos2[1] = ligtht_radius * cos(angle3 / 180);
+        break;
+
+    case ('.'):
+        pot_pos[1] += 0.1;
+        break;
+
+    case (','):
+        pot_pos[1] -= 0.1;
+        break;
     }
-}
+
+    }
+
+
 
 
 void reshape(GLsizei width, GLsizei height) {
@@ -241,7 +278,7 @@ void timer(int value) {
 
 int main(int argc, char** argv) {
     glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
     glutInitWindowSize(640, 480); // размеры окна
     glutInitWindowPosition(50, 50); // позиция окна на экране
     glutCreateWindow(title); // создаём окно
@@ -260,7 +297,7 @@ int main(int argc, char** argv) {
 
     glutTimerFunc(0, timer, 0);
     glutKeyboardFunc(process_Normal_Keys);
-
+ 
     glutMainLoop();
 
     return 0;

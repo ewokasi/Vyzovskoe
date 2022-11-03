@@ -11,7 +11,7 @@ int hash(std::string key) //пример лкюча ццББцц
 
 bool check_key(std::string key)
 {
-    if ((key[0]>=48 and key[0]<=57) and (key[1] >= 48 and key[1] )and (key[2] >= 65 and key[2]<=90) and (key[3] >= 65 and key[3] <= 90) and (key[4] >= 48 and key[4]) and (key[5] >= 48 and key[5]))
+    if ((key[0] >= 48 and key[0] <= 57) and (key[1] >= 65 and key[1] <= 90) and (key[2] >= 65 and key[2] <= 90) and (key[3] >= 65 and key[3] <= 90) and (key[4] >= 65 and key[4] <= 90) and (key[5] >= 48 and key[5] <= 57))
     {
         return 1;
     }

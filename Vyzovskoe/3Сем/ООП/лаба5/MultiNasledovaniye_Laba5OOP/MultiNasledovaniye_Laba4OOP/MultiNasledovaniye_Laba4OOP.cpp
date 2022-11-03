@@ -48,13 +48,13 @@ protected:
 void D1::show()
 {
 	std::cout << "D1 show " << y << " "  << std::endl;
+	B1::show();
 }
 
 D1::D1(int y, int z): B1 (z)
 {
 	this->y = y;
-	
-	B1::show();
+
 	std::cout << "Calling D1 Constructor with param " << y<<" "<< z << "\n";
 }
 
@@ -79,12 +79,13 @@ protected:
  void D2::show() 
 {
 	 std::cout << "D2 show private " << y << std::endl;
+	 B1::show();
 }
 D2::D2(int y, int z) : B1(z)
 {	
 	this->y = y;
-	B1::show();
 	std::cout << "Calling D2 Constructor with param " << y<< " "<< z << "\n";
+
 	
 }
 
@@ -108,7 +109,7 @@ private:
 D3::D3( int x, int y, int z) : D1(y, z)
 {
 	this->x = x;
-	D1::show();
+	
 	
 	std::cout << "calling D3 constructor with params: "<<  x <<" "<<y<<" "<<z << '\n';
 }
@@ -121,6 +122,7 @@ D3::~D3()
 void D3::show()
 {
 	std::cout << "D3 show " <<  x <<  std::endl;
+	D1::show();
 }
 
 class D4:public D2
@@ -139,13 +141,14 @@ protected:
 void D4::show()
 {
 	std::cout << "D4 show private " << x  << std::endl;
+	D2::show();
 
 }
 
 D4::D4(int x, int y , int z) : D2(y , z)
 {
 	this->x = x;
-	D2::show();
+	
 	std::cout << "Calling D4 Constructor with params: " << x << " "<< y<<" "<<z << "\n";
 }
 
