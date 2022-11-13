@@ -51,6 +51,8 @@ public:
     void gen(int count);
     void exprt(std::string destination);
     void edit_path(std::string path) { this->path = path; };
+    int find_key(std::string key);
+    void delkey(std::string data);
    
 
     class str
@@ -252,13 +254,50 @@ void table::exprt(std::string destination)
     file.close();
 }
 
+int table::find_key(std::string key)
+{
+    for (str* current = top; current != nullptr; current = current->next)
+    {
+        if (current->val==key)
+        {
+            return current->id;
+        }
+    }
+
+    return 0;
+}
+
+void table::delkey(std::string key)
+{
+    for (str* current = top; current->next != nullptr; current = current->next)
+    {
+
+        if (current->val == key and current == top)
+        {
+            top = current->next;
+            break;
+        }
+        if (current->next->val == key)
+        {
+            current->next = current->next->next;
+            break;
+        }
+        if (current->next->val == key and current->next->next==nullptr)
+        {
+            current->next = nullptr;
+            break;
+        }
+    }
+
+}
+
 
 
 int main()
 {
     table table;
     
-    std::cout << "1) to add random key\t2) to remove index\n3) to show the table\t4) to find id\n5) to find hashed key\t6) to export\n7)Enter your key\n\n88)to quit\n";
+    std::cout << "1) to add random key\t2) to remove index\n3) to show the table\t4) to find id\n5) to find hashed key\t6) to export\n7)Enter your key\t8)to find by key\n9)to delete by key\n\n88)to quit\n";
     int v=1;
     
     std::string data;
@@ -313,6 +352,18 @@ int main()
             data = enter_key();
             key = hash(data);
             table.add(std::to_string(key), data);
+            break;
+
+        case 8:
+            std::cout << "Enter the key to find: ";
+            std::cin >> data;
+            std::cout << table.find_key(data);
+            break;
+
+        case 9:
+            std::cout << "Enter key to delete: ";
+            std::cin >> data;
+            table.delkey(data);
             break;
 
         default:

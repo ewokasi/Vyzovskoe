@@ -26,6 +26,7 @@ public:
 	double get_data(int val);
 	int get_size() { return size; };
 	el* get_el(int index);
+	int same_el();
 	
 	
 
@@ -167,6 +168,41 @@ A::el* A::get_el(int index)
 	return current;
 }
 
+int A::same_el()
+{
+	int counte=0;
+	el* current = top;
+	int ignore[14] = {};
+	for (int i = 0; i < size; i++)
+	{
+		int temp = current->value;
+		el* compare = current->next;
+		for (int j = i; j < size-1; j++)
+		{
+			bool flag = 0;
+			if (temp == compare->value)
+			{
+				for (int q = 0; q < size; q++)
+				{
+					if (temp == ignore[q])
+					{
+						flag = 1;
+					}
+				}
+				if (flag==0)
+				{
+					ignore[counte] = temp;
+					counte++;
+
+				}
+			}
+			compare = compare->next;
+		}
+		current = current->next;
+	}
+	return counte;
+}
+
 A::A()
 {
 	
@@ -182,11 +218,11 @@ int main()
 	std::srand(time(0));
 	for (int i = 0; i < 14; i++)
 	{
-		array.add(rand()%1000);	
+		array.add(rand()%10);	
 	}
 	array.show();
 	
-	std::cout << "1) to sort array\t2)to delete index\t3)to delete index with sort\n4)to find by index\t5)to find by value\n\n";
+	std::cout << "1) to sort array\t2)to delete index\t3)to delete index with sort\n4)to find by index\t5)to find by value\n6)to find eq elements\n\n";
 	int var =0;
 	int index;
 	
@@ -232,6 +268,10 @@ int main()
 			std::cin >> index;
 			std::cout << array.get_data(index);
 			std::cout << '\n';
+			break;
+
+		case 6:
+			std::cout << "There are " << array.same_el()<<" same elements\n";
 			break;
 		default:
 			break;

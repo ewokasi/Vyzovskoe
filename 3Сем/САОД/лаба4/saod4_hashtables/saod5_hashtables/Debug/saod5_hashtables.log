@@ -1,1 +1,5 @@
-﻿  saod5_hashtables.vcxproj -> C:\Users\kosty\Documents\GitHub\Vyzovskoe\3Сем\САОД\лаба4\saod4_hashtables\Debug\saod5_hashtables.exe
+﻿  saod5_hashtables.cpp
+C:\Users\kosty\GitProjects\Vyzovskoe\3Сем\САОД\лаба4\saod4_hashtables\saod5_hashtables\saod5_hashtables.cpp(170,25): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\kosty\GitProjects\Vyzovskoe\3Сем\САОД\лаба4\saod4_hashtables\saod5_hashtables\saod5_hashtables.cpp(172,31): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\kosty\GitProjects\Vyzovskoe\3Сем\САОД\лаба4\saod4_hashtables\saod5_hashtables\saod5_hashtables.cpp(222,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  saod5_hashtables.vcxproj -> C:\Users\kosty\GitProjects\Vyzovskoe\3Сем\САОД\лаба4\saod4_hashtables\Debug\saod5_hashtables.exe
