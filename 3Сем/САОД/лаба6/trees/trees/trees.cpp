@@ -1,14 +1,15 @@
 ﻿
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
 
 struct node // структура для представления узлов дерева
 {
 	int key;
 	unsigned char height;
-	node* left;
-	node* right;
+	node* left= nullptr;
+	node* right = nullptr;
 	node* top = this;
 	node(int k) { key = k; left = right = 0; height = 1; }
 };
@@ -182,20 +183,143 @@ void serch(node* tree, int key) {
 	}
 	
 }
+struct arr {
+	int value;
+	
+	arr* next = nullptr;
+	arr(int v = NULL) { value = v; }
+};
+
+void arr_add(arr* a, int v) {
+
+	while (a->next)
+	{
+		a = a->next;
+	}
+	a->next = new arr(v);
+	
+}
+void walk(node* tree, arr* A) {
+	if (tree)
+	{
+		cout << tree->key<<" ";
+		arr_add(A, tree->key);
+		walk(tree->left, A);
+		walk(tree->right, A);
+	}
+}
+
+void even_del(node* tree, arr* num) {
+
+
+	if (tree->left==nullptr)
+	{
+		int temp = tree->key;
+		tree->key = tree->right->key;
+		tree->right->key = temp;
+		remove(tree, tree->right->key);
+		cout << tree->key << "\n";
+		return;
+	}
+	if (tree)
+	{
+		int i = 1;
+		for (arr* current = num; current; current = current->next) {
+			if (i%2==1)
+			{
+				remove(tree, current->value);
+			}
+			i++;
+		}
+	}
+}
+
+void task(node* root) {
+
+	arr A;
+	show(root);
+	walk(root, &A);
+	while (root->height > 2)
+	{
+		A = NULL;
+		cout << "\n/////////////////////////////////////////////////////////\n\n";
+		walk(root, &A);
+		even_del(root, &A);
+
+		cout << "\n";
+		show(root);
+		cout << "/////////////////////////////////////////////////////////\n\n";
+
+	}
+	remove(root, root->left->key);
+	int temp = root->key;
+	root->key = root->right->key;
+	root->right->key = temp;
+	remove(root, root->right->key);
+	cout << root->key;
+
+}
 
 int main()
 {
 	srand(time(0));
-	node* root = new node(55);
+	node* root = new node(rand()%60+20);
 	
 	
-	for (int i = 0; i < 23; i++) {
+	for (int i = 0; i < 26; i++) {
 		insert(root, rand() % 100);
 	}
+	int v = 10;
+	cout << "1 - to show\n2 - to add\n3 - to delete\n4 - to search\n5 - to direct walk\n6 - to delete even\n\n";
 	
-	show(root);
-	int k;
-	cin >> k;
-	serch(root, k);
+	int key;
+	arr A;
+	while (v!=0)
+	{
+		cin >> v;
+		switch (v)
+		{
+
+		case 1:
+			show(root);
+			break;
+
+		case 2:
+			cout << "enter key: ";
+			cin >> key;
+			insert(root, key);
+			cout << "Added\n";
+			break;
+
+		case 3:
+			cout << "enter key: ";
+			cin >> key;
+			remove(root, key);
+			cout << "Deleted";
+			break;
+		case 4:
+			cout << "enter key: ";
+			cin >> key;
+			serch(root, key);
+			break;
+
+		case 5:
+			walk(root, &A);
+			break;
+
+		case 6:
+			task(root);
+			root = new node(rand() % 60 + 20);
+			break;
+		default:
+			break;
+		}
+	}
+
+	
+	
+	
+	
+
 }
 
