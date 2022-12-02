@@ -59,7 +59,16 @@ void A::add(int val)
 }
 void A::del(int index)
 {
+
+
 	el* current = top;
+
+	if (index == 0)
+	{
+		top = top->next;
+		size--;
+		return;
+	}
 	for (int i = 1; i < index; i++)
 	{
 		if (current==nullptr)
@@ -92,7 +101,7 @@ void A::show()
 
 void A::show_info()
 {
-	std::cout << "general_comporisons: " << general_comparison << "\ngeneral_permutations: " << general_permutation << "\n";
+	std::cout << "Comps: " << general_comparison << "\Permuts: " << general_permutation << "\n";
 	general_comparison = 0;
 	general_permutation = 0;
 }
@@ -222,7 +231,7 @@ int main()
 	}
 	array.show();
 	
-	std::cout << "1) to sort array\t2)to delete index\t3)to delete index with sort\n4)to find by index\t5)to find by value\n6)to find eq elements\n\n";
+	std::cout << "1) to sort array\t2)to delete index\t3)to delete index with sort\n4)to find by index\t5)to find by value\n6)to find eq elements\n7)to add new\n\n";
 	int var =0;
 	int index;
 	
@@ -241,18 +250,32 @@ int main()
 			std::cout << "Enter index: ";
 			
 			std::cin >> index;
-			array.del(index);
-			array.show();
-			std::cout << '\n';
+			if (index < array.get_size()) {
+				array.del(index);
+				array.show();
+				std::cout << '\n';
+			}
+			else
+			{
+				std::cout << "Out of range\n";
+			}
+			
 			break;
 		case 3:
 			std::cout << "Enter index: ";
-			
 			std::cin >> index;
-			array.del_with_sort(index);
-			array.show();
-			array.show_info();
-			std::cout << '\n';
+			if (index<array.get_size())
+			{
+				array.del_with_sort(index);
+				array.show();
+				array.show_info();
+				std::cout << '\n';
+			}
+			else
+			{
+				std::cout << "Out of range\n";
+			}
+			
 			break;
 
 		case 4:
@@ -273,6 +296,12 @@ int main()
 		case 6:
 			std::cout << "There are " << array.same_el()<<" same elements\n";
 			break;
+
+		case 7:
+			std::cout << "enter new value: ";
+			std::cin >> index;
+			array.add(index);
+			array.show();
 		default:
 			break;
 		}

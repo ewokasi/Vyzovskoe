@@ -1,6 +1,7 @@
 ﻿  quicksort_laba5saod.cpp
 C:\Users\kosty\GitProjects\Vyzovskoe\3Сем\САОД\лаба5\quicksort_laba5saod\quicksort_laba5saod\quicksort_laba5saod.cpp(12,28): warning C4244: =: преобразование "double" в "int", возможна потеря данных
-C:\Users\kosty\GitProjects\Vyzovskoe\3Сем\САОД\лаба5\quicksort_laba5saod\quicksort_laba5saod\quicksort_laba5saod.cpp(117,24): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
-C:\Users\kosty\GitProjects\Vyzovskoe\3Сем\САОД\лаба5\quicksort_laba5saod\quicksort_laba5saod\quicksort_laba5saod.cpp(118,21): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
-C:\Users\kosty\GitProjects\Vyzovskoe\3Сем\САОД\лаба5\quicksort_laba5saod\quicksort_laba5saod\quicksort_laba5saod.cpp(218,17): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\kosty\GitProjects\Vyzovskoe\3Сем\САОД\лаба5\quicksort_laba5saod\quicksort_laba5saod\quicksort_laba5saod.cpp(104,50): warning C4129: P: неизвестная escape-последовательность
+C:\Users\kosty\GitProjects\Vyzovskoe\3Сем\САОД\лаба5\quicksort_laba5saod\quicksort_laba5saod\quicksort_laba5saod.cpp(126,24): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+C:\Users\kosty\GitProjects\Vyzovskoe\3Сем\САОД\лаба5\quicksort_laba5saod\quicksort_laba5saod\quicksort_laba5saod.cpp(127,21): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+C:\Users\kosty\GitProjects\Vyzovskoe\3Сем\САОД\лаба5\quicksort_laba5saod\quicksort_laba5saod\quicksort_laba5saod.cpp(227,17): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
   quicksort_laba5saod.vcxproj -> C:\Users\kosty\GitProjects\Vyzovskoe\3Сем\САОД\лаба5\quicksort_laba5saod\Debug\quicksort_laba5saod.exe

@@ -1,6 +1,8 @@
 ﻿
 #include <iostream>
-
+#include <algorithm>
+#include <numeric>
+#include <vector>
 
 class arr
 {
@@ -10,25 +12,26 @@ public:
 	void fill(int index);
 	void show();
 	int get_size() { return size; }
-	int* get_data() { return data; }
+	std::vector <int> get_data() { return data; }
 	double avg();
 	arr plus(arr right);
 	int count_mod(int m);
+
 	
 
 private:
-	int* data;
+	std::vector <int> data;
 	int size;
 };
 
 arr::arr(int size, int min, int max)
 {
-	data = new int[size];
+	
 	this->size = size;
-	srand(time(0));
+	std::srand(time(0));
 	for (int i = 0; i < size; i++)
 	{
-		data[i] = (rand() % (abs(min)+abs(max)+1))+min;
+		data.push_back((int)((std::rand() % (abs(min) + abs(max) + 1)) + min)) ;
 	}
 }
 
@@ -55,23 +58,17 @@ void arr::show()
 
 double arr::avg()
 {
-	int sum=0;
-	for (int i = 0; i < size; i++)
-	{
-		sum += data[i];
-	}
-
+	double sum = std::accumulate(data.begin(), data.end(), 0);
+	//algoritm numeric
 
 	return sum/size;
 }
 
 arr arr::plus(arr right)
 {
-	for (int i = 0; i < size; i++)
-	{
-		right.data[i] += data[i];
-	}
 
+	std::vector <int> res = std::partial_sum(right.data.begin(), right.data.end(), data.begin());
+		
 	return right;
 }
 
@@ -101,6 +98,11 @@ int main()
 
 	std::cout << "Array A: ";
 	arr A(length, 0, 10);
+	if (A.get_data().empty())
+	{
+		std::cout << "Length is 0\n";
+		return 0;
+	}
 	A.show();
 
 	std::cout << "Average of A is: " << A.avg()<<'\n' << '\n';
