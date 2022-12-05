@@ -1,3 +1,4 @@
 ﻿  oop7.cpp
-C:\Users\kosty\GitProjects\Vyzovskoe\3Сем\ООП\лаба7\oop7\oop7\oop7.cpp(30,17): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\kosty\GitProjects\Vyzovskoe\3Сем\ООП\лаба7\oop7\oop7\oop7.cpp(31,17): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\kosty\GitProjects\Vyzovskoe\3Сем\ООП\лаба7\oop7\oop7\oop7.cpp(72,20): warning C4018: <: несоответствие типов со знаком и без знака
   oop7.vcxproj -> C:\Users\kosty\GitProjects\Vyzovskoe\3Сем\ООП\лаба7\oop7\Debug\oop7.exe

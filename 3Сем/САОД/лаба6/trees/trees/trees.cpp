@@ -13,6 +13,27 @@ struct node // структура для представления узлов �
 	node* top = this;
 	node(int k) { key = k; left = right = 0; height = 1; }
 };
+node* find(node* tree, int v) {
+	node* cur = tree;
+	while (cur)
+	{
+		if (cur->key < v)
+		{
+			cur = cur->right;
+		}
+		else if (cur->key > v) {
+			cur = cur->left;
+		}
+		if (cur and cur->key == v)
+		{
+			return cur;
+		}
+		
+
+	}
+	return 0;
+
+}
 
 unsigned char height(node* p)
 {
@@ -114,6 +135,7 @@ node* remove(node* p, int k) // удаление ключа k из дерева 
 }
 
 void add(node *root, int key) {
+
 	node* current = root;
 	node *top = current->top;
 	bool flag = 1;
@@ -143,6 +165,7 @@ void add(node *root, int key) {
 	
 	root->top = top;
 }
+
 void show(node* root, int space = 0) {
 	if (!root)
 		return;
@@ -161,6 +184,10 @@ void serch(node* tree, int key) {
 	while (i<=tree->height)
 	{
 		i++;
+		if (current==nullptr)
+		{
+			return;
+		}
 		cout << current->key << "-";
 		if (current->key!=key)
 		{
@@ -168,9 +195,11 @@ void serch(node* tree, int key) {
 			{
 				current = current->right;
 			}
-			if (key < current->key)
+			else if (key < current->key)
 			{
-				current = current->left;
+					current = current->left;
+			
+
 			}
 			
 		}
@@ -185,11 +214,12 @@ void serch(node* tree, int key) {
 }
 struct arr {
 	int value;
-	
+
 	arr* next = nullptr;
 	arr(int v = NULL) { value = v; }
-};
 
+
+};
 void arr_add(arr* a, int v) {
 
 	while (a->next)
@@ -282,11 +312,18 @@ int main()
 
 		case 1:
 			show(root);
+			cout << "\n";
 			break;
 
 		case 2:
 			cout << "enter key: ";
 			cin >> key;
+			if (find(root, key) != 0)
+			{
+				cout << "Enter uniq key\n";
+				break;
+			}
+
 			insert(root, key);
 			cout << "Added\n";
 			break;
@@ -294,22 +331,29 @@ int main()
 		case 3:
 			cout << "enter key: ";
 			cin >> key;
+
+		
+
 			remove(root, key);
 			cout << "Deleted";
+			cout << "\n";
 			break;
 		case 4:
 			cout << "enter key: ";
 			cin >> key;
 			serch(root, key);
+			cout << "\n";
 			break;
 
 		case 5:
 			walk(root, &A);
+			cout << "\n";
 			break;
 
 		case 6:
 			task(root);
 			root = new node(rand() % 60 + 20);
+			cout << "\n";
 			break;
 		default:
 			break;

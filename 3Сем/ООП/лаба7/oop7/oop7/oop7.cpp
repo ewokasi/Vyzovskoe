@@ -15,7 +15,7 @@ public:
 	std::vector <int> get_data() { return data; }
 	double avg();
 	arr plus(arr right);
-	int count_mod(int m);
+	int count_mod();
 
 	
 
@@ -49,10 +49,9 @@ void arr::fill(int index)
 
 void arr::show()
 {
-	for (int i = 0; i < size; i++)
-	{
-		std::cout << data[i] << " ";
-	}
+	for (auto n : data)
+		std::cout << n << " ";
+	std::cout << '\n';
 	std::cout << "\n";
 }
 
@@ -67,23 +66,22 @@ double arr::avg()
 arr arr::plus(arr right)
 {
 
-	std::vector <int> res = std::partial_sum(right.data.begin(), right.data.end(), data.begin());
-		
+	std::vector <int> v;
+	v = right.data;
+	
+	for (int i = 0; i < v.size();i++)
+	{
+		v[i] += data[i];
+	}
+	right.data = v;
 	return right;
 }
 
-int arr::count_mod(int m)
+int arr::count_mod()
 {
-	int counter=0;
-	for (int i = 0; i < size; i++)
-	{
-		
-		if (data[i]%m==0)
-		{
-			counter++;
-		}
-	}
-	return counter;
+	std::vector <int>v = data;
+	int count_div5 = std::count_if(v.begin(), v.end(), [](int i) {return i % 5 == 0; });
+	return count_div5;
 }
 
 
@@ -116,8 +114,8 @@ int main()
 	C.show();
 	std::cout << "Average of C is: " << C.avg() << '\n' << '\n';
 
-	std::cout << "Count of mods(5) For A: " << A.count_mod(5)<<'\n';
-	std::cout << "Count of mods(5) For B: " << B.count_mod(5) << '\n';
-	std::cout << "Count of mods(5) For C: " << C.count_mod(5) << '\n';
+	std::cout << "Count of mods(5) For A: " << A.count_mod()<<'\n';
+	std::cout << "Count of mods(5) For B: " << B.count_mod() << '\n';
+	std::cout << "Count of mods(5) For C: " << C.count_mod() << '\n';
 }
 
