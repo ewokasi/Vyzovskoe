@@ -50,9 +50,9 @@ void arr::fill(int index)
 void arr::show()
 {
 	for (auto n : data)
-		std::cout << n << " ";
+		std::cout << n << "\t";
 	std::cout << '\n';
-	std::cout << "\n";
+	
 }
 
 double arr::avg()
@@ -94,7 +94,7 @@ int main()
     std::cout << "Enter length of array: ";
 	std::cin >> length;
 
-	std::cout << "Array A: ";
+	std::cout << "Array A: \n";
 	arr A(length, 0, 10);
 	if (A.get_data().empty())
 	{
@@ -104,15 +104,17 @@ int main()
 	A.show();
 
 	std::cout << "Average of A is: " << A.avg()<<'\n' << '\n';
-	std::cout << "Array B: ";
+	std::cout << "Array B: \n";
 	arr B(length, -10, 10);
 	B.show();
-	std::cout << "Average of B is: " << B.avg() << '\n' << '\n';
+	std::cout << "Average of B is:" << B.avg() << '\n' << '\n';
 
-	std::cout << "Sum of A+B = C: ";
+	std::cout << "Sum of A+B = C: \n\n";
+	A.show();
+	B.show();
 	arr C = A.plus(B);
 	C.show();
-	std::cout << "Average of C is: " << C.avg() << '\n' << '\n';
+	std::cout << "Average of C is: \n" << C.avg() << '\n' << '\n';
 
 	std::cout << "Count of mods(5) For A: " << A.count_mod()<<'\n';
 	std::cout << "Count of mods(5) For B: " << B.count_mod() << '\n';

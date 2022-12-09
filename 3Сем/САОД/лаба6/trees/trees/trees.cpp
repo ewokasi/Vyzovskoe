@@ -13,6 +13,7 @@ struct node // структура для представления узлов �
 	node* top = this;
 	node(int k) { key = k; left = right = 0; height = 1; }
 };
+
 node* find(node* tree, int v) {
 	node* cur = tree;
 	while (cur)
@@ -102,7 +103,12 @@ node* insert(node* p, int k) // вставка ключа k в дерево с �
 
 node* findmin(node* p) // поиск узла с минимальным ключом в дереве p 
 {
-	return p->left ? findmin(p->left) : p;
+		return p->left ? findmin(p->left) : p;
+}
+
+node* findmax(node* p)
+{
+	return p->right ? findmax(p->right) : p;
 }
 
 node* removemin(node* p) // удаление узла с минимальным ключом из дерева p
@@ -112,6 +118,15 @@ node* removemin(node* p) // удаление узла с минимальным 
 	p->left = removemin(p->left);
 	return balance(p);
 }
+
+node* removemax(node* p) // удаление узла с минимальным ключом из дерева p
+{
+	if (p->right == 0)
+		return p->left;
+	p->right = removemax(p->right);
+	return balance(p);
+}
+
 
 node* remove(node* p, int k) // удаление ключа k из дерева p
 {
@@ -134,37 +149,6 @@ node* remove(node* p, int k) // удаление ключа k из дерева 
 	return balance(p);
 }
 
-void add(node *root, int key) {
-
-	node* current = root;
-	node *top = current->top;
-	bool flag = 1;
-	while (current)
-	{
-		if (current->key>key )
-		{
-			if (current->left != nullptr)
-			{
-				insert(current, key);
-				break;
-			}
-			current = current->left;
-		}
-		if (current->key < key )
-		{
-			
-			if (current->right != nullptr)
-			{
-				insert(current, key);
-				break;
-			}
-			current = current->right;
-		}
-		
-	}
-	
-	root->top = top;
-}
 
 void show(node* root, int space = 0) {
 	if (!root)
@@ -186,7 +170,7 @@ void serch(node* tree, int key) {
 		i++;
 		if (current==nullptr)
 		{
-			return;
+			return ;
 		}
 		cout << current->key << "-";
 		if (current->key!=key)
@@ -229,65 +213,31 @@ void arr_add(arr* a, int v) {
 	a->next = new arr(v);
 	
 }
-void walk(node* tree, arr* A) {
+void walk(node* tree) {
 	if (tree)
 	{
-		cout << tree->key<<" ";
-		arr_add(A, tree->key);
-		walk(tree->left, A);
-		walk(tree->right, A);
+
+		walk(tree->left);
+		walk(tree->right);
+		cout << tree->key << " ";
+		
 	}
 }
 
-void even_del(node* tree, arr* num) {
 
-
-	if (tree->left==nullptr)
-	{
-		int temp = tree->key;
-		tree->key = tree->right->key;
-		tree->right->key = temp;
-		remove(tree, tree->right->key);
-		cout << tree->key << "\n";
-		return;
-	}
-	if (tree)
-	{
-		int i = 1;
-		for (arr* current = num; current; current = current->next) {
-			if (i%2==1)
-			{
-				remove(tree, current->value);
-			}
-			i++;
-		}
-	}
-}
 
 void task(node* root) {
-
-	arr A;
-	show(root);
-	walk(root, &A);
-	while (root->height > 2)
+	while (findmax(root)->key!= findmin(root)->key and root)
 	{
-		A = NULL;
-		cout << "\n/////////////////////////////////////////////////////////\n\n";
-		walk(root, &A);
-		even_del(root, &A);
-
-		cout << "\n";
+		cout << "---new iteration---\n\n";
 		show(root);
-		cout << "/////////////////////////////////////////////////////////\n\n";
-
+		cout << "max value, height: " << findmax(root)->key << "; " << (int)height(findmax(root)) << "\n";
+		cout << "min value, height: " << findmin(root)->key << "; " << (int)height(findmin(root)) << '\n';
+		removemin(root);
+		removemax(root);
 	}
-	remove(root, root->left->key);
-	int temp = root->key;
-	root->key = root->right->key;
-	root->right->key = temp;
-	remove(root, root->right->key);
-	cout << root->key;
-
+	walk(root);
+	
 }
 
 int main()
@@ -296,7 +246,7 @@ int main()
 	node* root = new node(rand()%60+20);
 	
 	
-	for (int i = 0; i < 26; i++) {
+	for (int i = 0; i < 25; i++) {
 		insert(root, rand() % 100);
 	}
 	int v = 10;
@@ -346,24 +296,19 @@ int main()
 			break;
 
 		case 5:
-			walk(root, &A);
+			walk(root);
 			cout << "\n";
 			break;
 
 		case 6:
 			task(root);
-			root = new node(rand() % 60 + 20);
+			
 			cout << "\n";
 			break;
 		default:
 			break;
 		}
 	}
-
-	
-	
-	
-	
 
 }
 

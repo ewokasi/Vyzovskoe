@@ -117,6 +117,18 @@ void display() {
     glDisable(GL_TEXTURE_2D);
 
 
+
+    angle1 += 10;
+    pos0[0] = ligtht_radius * cos(angle1 / 180);
+    pos0[1] = ligtht_radius * sin(angle1 / 180);
+    angle2 += 10;
+    pos1[2] = ligtht_radius * cos(angle2 / 180);
+    pos1[1] = ligtht_radius * sin(angle2 / 180);
+    angle3 += 10;
+    pos2[0] = ligtht_radius * sin(angle3 / 180);
+    pos2[1] = ligtht_radius * cos(angle3 / 180);
+
+
     glLoadIdentity();
     glTranslatef(pos_x, pos_y, zoom);
     glRotatef(angle_x, 0.0f, 1.0f, 0.0f);
@@ -249,6 +261,17 @@ void process_Normal_Keys(unsigned char key, int x, int y) {
     case (','):
         pot_pos[1] -= 0.1;
         break;
+
+    case 'q':
+        con_pos[0] +=0.2;
+        ico_pos[0] += -0.2;
+        break;
+
+    case 'Q':
+        con_pos[0] += -0.2;
+        ico_pos[0] += 0.2;
+        break;
+
     }
 
     }

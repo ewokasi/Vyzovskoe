@@ -65,7 +65,7 @@ bool   fog_bool = false;
 GLuint filter;
 GLuint fogMode[] = { GL_EXP, GL_EXP2, GL_LINEAR };
 GLuint fogfilter = 0;
-GLfloat fogColor[4] = { 0.5f, 0.5f, 0.5f, 1.0f };
+GLfloat fogColor[4] = { 0.5f, 0.1f, 0.1f, 1.0f };
 
 void fog_on() {
     glEnable(GL_FOG);                       // Включает туман (GL_FOG)
@@ -355,7 +355,7 @@ void display(void) {
         0.0f, 1.0f, 0.0f);
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glClearColor(0.5, 0.5, 0.5, 1);
+    glClearColor(0.5f, 0.1f, 0.1f, 1.0f);
     glPushMatrix();
     glEnable(GL_DEPTH_TEST);
 
@@ -380,8 +380,8 @@ void display(void) {
     glDisable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, texture);
     gluNurbsSurface(theNurb,
-        size_numb_x + size_numb_y, knots, size_numb_x + size_numb_y, knots,
-        size_numb_x * 3, 3, &ctlpoints[0][0][0],
+        size_numb_x + size_numb_y, knots, size_numb_x + 1.13*size_numb_y, knots,
+        size_numb_x * 2, 3, &ctlpoints[0][0][0],
         4, 4, GL_MAP2_VERTEX_3);
 
     gluEndSurface(theNurb);
@@ -391,6 +391,10 @@ void display(void) {
 
     glTranslatef(10.0f, 0.0f, -10.0f);
     glScaled(2,2,2);
+    glCallList(theTorus);
+
+    glTranslatef(10.0f, 0.0f, -10.0f);
+    glScaled(2, 2, 2);
     glCallList(theTorus);
 
     glTranslatef(10.0f, 0.0f, -10.0f);
@@ -474,7 +478,7 @@ int main(int argc, char** argv) {
     glEnable(GL_NORMALIZE);
 
     theNurb = gluNewNurbsRenderer();
-    gluNurbsProperty(theNurb, GLU_SAMPLING_TOLERANCE, 50.0);
+    gluNurbsProperty(theNurb, GLU_SAMPLING_TOLERANCE, 30.0);
     gluNurbsProperty(theNurb, GLU_DISPLAY_MODE, GLU_FILL);
     gluNurbsProperty(theNurb, GLU_AUTO_LOAD_MATRIX, false);
 

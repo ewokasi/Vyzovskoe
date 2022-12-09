@@ -1,0 +1,8 @@
+﻿  graphs.cpp
+C:\Users\kosty\GitProjects\Vyzovskoe\3Сем\САОД\лаба7\graphs\graphs\graphs.cpp(149,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\kosty\GitProjects\Vyzovskoe\3Сем\САОД\лаба7\graphs\graphs\graphs.cpp(150,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\kosty\GitProjects\Vyzovskoe\3Сем\САОД\лаба7\graphs\graphs\graphs.cpp(191,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\kosty\GitProjects\Vyzovskoe\3Сем\САОД\лаба7\graphs\graphs\graphs.cpp(225,22): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\kosty\GitProjects\Vyzovskoe\3Сем\САОД\лаба7\graphs\graphs\graphs.cpp(244,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\kosty\GitProjects\Vyzovskoe\3Сем\САОД\лаба7\graphs\graphs\graphs.cpp(275,27): warning C4018: >=: несоответствие типов со знаком и без знака
+  graphs.vcxproj -> C:\Users\kosty\GitProjects\Vyzovskoe\3Сем\САОД\лаба7\graphs\Debug\graphs.exe
