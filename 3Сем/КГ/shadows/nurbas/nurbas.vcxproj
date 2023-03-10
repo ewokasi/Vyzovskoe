@@ -142,7 +142,10 @@
     <ClCompile Include="nurbas.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="draw.h" />
     <ClInclude Include="mat4.h" />
+    <ClInclude Include="models.h" />
+    <ClInclude Include="move.h" />
     <ClInclude Include="scene.h" />
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="timer.h" />
