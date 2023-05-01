@@ -1,0 +1,40 @@
+	.global	 _c_int00
+
+.data
+
+array1: .byte 1,4,3,4,5,6 ; создаем массив
+size .byte 6
+
+search .byte 4 ; значение для поиска
+null .byte 0
+
+EQ:
+	ADD .L1 A10,1, A10
+	[A0] B .S1 LOOP
+
+
+_c_int00:
+
+
+.text
+
+    MVKL .S1 array1, A4 ; загружаем адрес массива1 в A3
+    MVKH .S1 array1, A4
+	MVK .S1 0, A2
+	MVK .S1 0, A3
+    MVK .S1 4, A1
+    MVK .S1 size, A0 ; счетчик повторений
+    MVK .S1 0, A10 ; кол вхождений
+
+LOOP:
+    SUB .L1 A0, 1, A0 ; уменьшаем счетчик повторений на 1
+	ldb .D1 *A4[A0], A12
+	nop 4
+	SUB .L1 A12, A1, A2
+
+	[!A2] B .S1 EQ
+	[A0] B .S1 LOOP
+
+
+
+
