@@ -1,5 +1,6 @@
-﻿#ifndef rooms_h
-#define rooms_h
+﻿#pragma once
+#ifndef guests_h
+#define guests_h
 #include <iostream>
 
 #include <string>
@@ -82,6 +83,51 @@ public:
         }
     }
 
+    void show( string passport) {
+        Guest* guest = get(passport);
+        if (guest != nullptr) {
+            cout << "ФИО: " << guest->fullName << endl;
+            cout << "Год рождения: " << guest->birthYear << endl;
+            cout << "Адрес: " << guest->address << endl;
+            cout << "Цель прибытия: " << guest->purpose << endl;
+        }
+        else
+        {
+            cout << "Error, try again\n";
+        }
+    }
+    void show_by_name(string FIO) {
+        for (auto i : table) {
+            if (i.guest != nullptr ) {
+                if (FIO != i.guest->fullName) continue;
+                cout << "ФИО: " << i.guest->fullName << endl;
+                cout << "Год рождения: " << i.guest->birthYear << endl;
+                cout << "Адрес: " << i.guest->address << endl;
+                cout << "Цель прибытия: " << i.guest->purpose << endl;
+            }
+        }
+       
+    }
+    void show_all() {
+        for (auto i : table) {
+            if (i.guest != nullptr && i.deleted==false) {
+                cout << "\nФИО: " << i.guest->fullName << endl;
+                cout << "Год рождения: " << i.guest->birthYear << endl;
+                cout << "Адрес: " << i.guest->address << endl;
+                cout << "Цель прибытия: " << i.guest->purpose << "\n\n";
+            }
+        }
+    }
+    void remove_all() {
+        for (auto i : table) {
+            if (i.guest != nullptr) {
+                i.deleted = true;
+                count--;
+            }
+        }
+
+    }
+
 
 private:
     int size;
@@ -112,35 +158,9 @@ private:
         }
         table = newTable;
     }
-    // Размер хеш-таблицы
+
+    
+    
 };
 //
-//int main()
-//{
-//    setlocale(LC_ALL, "RUS");
-//    HashTable hotel;
-//    // Добавление элементов
-//    hotel.put("1234-567890", "Иванов Иван Иванович", 1980, "Москва, ул. Пушкина, д.1", "Отдых");
-//    hotel.put("2345-678901", "Петров Петр Петрович", 1990, "Санкт-Петербург, ул. Ломоносова, д.2", "Работа");
-//    hotel.put("3456-789012", "Сидоров Сидор Сидорович", 1975, "Казань, ул. Баумана, д.3", "Отдых");
-//
-//    // Получение элемента
-//    Guest* guest = hotel.get("1234-567890");
-//    if (guest != nullptr) {
-//        cout << "ФИО: " << guest->fullName << endl;
-//        cout << "Год рождения: " << guest->birthYear << endl;
-//        cout << "Адрес: " << guest->address << endl;
-//        cout << "Цель прибытия: " << guest->purpose << endl;
-//    }
-//    else {
-//        cout << "Постоялец не найден" << endl;
-//    }
-//
-//    // Удаление элемента
-//    hotel.remove("2345-678901");
-//
-//    return 0;
-//
-//}
-
 #endif

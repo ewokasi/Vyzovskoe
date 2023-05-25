@@ -1,3 +1,4 @@
+#pragma once
 #ifndef booking_h
 #define booking_h
 
@@ -7,12 +8,20 @@ using namespace std;
 
 class Node {
 public:
-    int data;
+    
+    string passport;
+    string room;
+    string goesin;
+    string goesout;
+   
     Node* next;
     Node* prev;
 
-    Node(int data) {
-        this->data = data;
+    Node(string p, string r, string in, string out) {
+        passport = p;
+        room = r;
+        goesin = in;
+        goesout = out;
         this->next = nullptr;
         this->prev = nullptr;
     }
@@ -28,16 +37,37 @@ public:
         this->tail = nullptr;
     }
 
-    void add(int data) {
-        Node* node = new Node(data);
+    void add(string p, string r, string in, string out) {
+        Node* node = new Node(p, r, in, out);
         if (head == nullptr) {
-            head = tail = node;
+            head = node;
+            tail = node;
         }
         else {
             tail->next = node;
             node->prev = tail;
             tail = node;
         }
+    }
+    Node* remove_by_room(string room) {
+        Node* current = head;
+        if (current->room == room)
+        {
+            remove(current);
+            return 0;
+        }
+       
+        current = current->next;
+        while (current != nullptr) {
+            if (current->room == room)
+            {
+                remove(current);
+                break;
+            }
+            current = current->next;
+            
+        }
+        return 0;
     }
 
     void remove(Node* node) {
@@ -63,7 +93,8 @@ public:
     void print() {
         Node* node = head;
         while (node != nullptr) {
-            cout << node->data << " ";
+           
+            cout << node->room << " "<<node -> passport<<" "<< node->goesin<<" "<<node->goesout<<"\n";
             node = node->next;
         }
         cout << endl;
