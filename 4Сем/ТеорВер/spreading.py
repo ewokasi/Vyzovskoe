@@ -57,6 +57,10 @@ def ascii_plot(dist, num_of_intervals=20):
 
 for i in range(10):
 
-    dist = [pseudo_norm() for x in range(100)]
+    #dist = [random.uniform(1, 100) for x in range(100)]
+    #dist = [random.pseudo_norm(50, 3) for x in range(100)]
+    dist = [random.gauss(1, 100) for x in range(100)]
     ascii_plot(dist)
     print('\n')
+    print(dist)
+
